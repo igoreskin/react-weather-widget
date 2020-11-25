@@ -1,38 +1,104 @@
 .App {
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 50px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  font-size: 300%;
+  color: #5B5B5B;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.description {
+  font-size: 160%;
+  color: #756F6D;
+  font-weight: 500;
+  margin-bottom: 100px;
+  letter-spacing: -1px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.temp {
+  font-size: 390%;
+  color: #555555;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.temp .degree {
+  font-size: 75%;
+  margin-top: -1px;
+  margin-left: 5px;
+  position: absolute;
+}
+
+.minmax .degree {
+  font-size: 65%;
+  font-weight: 600;
+  margin-top: 1px;
+  margin-left: 5px;
+  position: absolute;
+}
+
+.minmax {
+  margin: 0 auto;
+  font-size: 200%;
+  font-weight: 500;
+  color: #7a7a7a;
+  width: 110px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding-left: 18px;
 }
 
-.App-link {
-  color: #61dafb;
+.line {
+  margin: 60px auto;
+  width: 70%; 
+  height: 2.5px;
+  border-radius: 1px;
+  background-color: #BFBFBF;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttons {
+  display: flex;
+  margin: 8px auto;
+  width: 345px;
+  justify-content: space-between;
+}
+
+.zip-header {
+  font-family: "Lato", sans-serif;
+  color: #696967;
+  text-align: left;
+  width: 345px;
+  margin: 0 auto;
+  font-size: 120%;
+}
+
+.zip-container {
+  width: 130px;
+  height: 35px;
+  border: 2.38px solid #BFBFBF;
+  border-radius: 4px;
+  color: #7a7a7a;
+  font-weight: 500;
+  font-size: 120%;
+  font-family: "Lato", sans-serif;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 8px;
+  box-shadow: inset 0 3px 3px -3px #7a7a7a;
+}
+
+.update {
+  width: 185px;
+  border: 2.38px solid #BFBFBF;
+  border-radius: 7px;
+  color: #4A4A4D;
+  font-weight: 700;
+  font-size: 120%;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: -1px;
+  text-shadow: -0.2px 1.3px white;
+  background: linear-gradient(to bottom, #ebeaea 0% ,#a5a5a5 100%);
+  box-shadow: 0px 3px 3px #c9c9c9;
 }
