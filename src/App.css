@@ -7,6 +7,11 @@
 .header {
   font-size: 300%;
   color: #5B5B5B;
+  margin-left: 25px;
+}
+
+img {
+  margin-left: 10px;
 }
 
 .description {
@@ -47,7 +52,7 @@
   width: 110px;
   display: flex;
   justify-content: space-between;
-  padding-left: 18px;
+  padding-left: 10px;
 }
 
 .line {
@@ -100,6 +105,16 @@
   font-family: 'Open Sans', sans-serif;
   letter-spacing: -1px;
   text-shadow: -0.2px 1.3px white;
-  background: linear-gradient(to bottom, #ebeaea 0% ,#a5a5a5 100%);
   box-shadow: 0px 3px 3px #c9c9c9;
+  background: linear-gradient(to bottom, #ebeaea 0% ,#807f7f 100%);
+  background-size: 1px 70px; 
+  transition: all 0.3s;
+}
+
+.update:hover {
+  background-position: -200px;
+}
+
+.update:focus {
+  outline: 0 !important;
 }
