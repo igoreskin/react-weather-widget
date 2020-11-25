@@ -90,6 +90,7 @@
 }
 
 .update {
+  cursor: pointer;
   width: 185px;
   border: 2.38px solid #BFBFBF;
   border-radius: 7px;
