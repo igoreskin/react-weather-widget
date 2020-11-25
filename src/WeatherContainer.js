@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 const WeatherContainer = () => {
 
   const [weather, setWeather] = useState([]);
-  const [zip, setZip] = useState('10036')
+  const [zip, setZip] = useState('10036');
 
   useEffect(() => {
-    fetchWeather()
+    fetchWeather();
+    inputRef.current.focus();
   }, [])
 
   useEffect(() => {
-    setWeather(weather)
+    setWeather(weather);
+    inputRef.current.focus();
   }, [weather])
+
+  const inputRef = useRef(null);
 
   const baseURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=709847967f5e54b97308c1b2cae4dee5`
 
@@ -29,9 +33,10 @@ const WeatherContainer = () => {
     setZip(e.target.value)
   }
 
-  // let paramsString = baseURL.split("?")[1];
-  // let searchParams = new URLSearchParams(paramsString);
-  // let zipCode = searchParams.get("zip").split(",")[0];
+  const handleSubmit = e => {
+    e.preventDefault();
+    fetchWeather();
+  }
 
   const tempConversion = n => Math.round(n - 273.15);
 
@@ -62,10 +67,10 @@ const WeatherContainer = () => {
 
       <div className="zip-header">Zip Code:</div>
 
-      <div className="buttons">
-        <input className="zip-container" type="text" value={zip} onChange={handleChange} />
-        <button className="update" onClick={fetchWeather}>Update</button>
-      </div>
+        <form className="buttons" onSubmit={handleSubmit}>
+          <input type="text" ref={inputRef} className="zip-container" value={zip || ''} onChange={handleChange} />
+          <button className="update" type="submit">Update</button>
+        </form>
     </div>
   )
 }

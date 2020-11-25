@@ -118,3 +118,7 @@ img {
 .update:focus {
   outline: 0 !important;
 }
+
+.zip-container:focus {
+  outline: 0 !important;
+}
