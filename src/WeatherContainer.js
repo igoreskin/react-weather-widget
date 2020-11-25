@@ -13,15 +13,20 @@ const WeatherContainer = () => {
     setWeather(weather)
   }, [weather])
 
+  const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=10036,us&appid=709847967f5e54b97308c1b2cae4dee5'
+
   const fetchWeather = async () => {
     try {
-      const res = await axios
-      .get('https://api.openweathermap.org/data/2.5/weather?zip=10036,us&appid=709847967f5e54b97308c1b2cae4dee5');
+      const res = await axios.get(baseURL);
       setWeather(res.data);
     } catch (error) {
       console.error(error.message);
     }
   }
+
+  let paramsString = baseURL.split("?")[1];
+  let searchParams = new URLSearchParams(paramsString);
+  let zipCode = searchParams.get("zip").split(",")[0];
 
   const tempConversion = n => Math.round(n - 273.15);
 
@@ -36,7 +41,7 @@ const WeatherContainer = () => {
           />
         }
       </div>
-      
+
       <div className="description">{weather.weather && weather.weather[0].description}</div>
 
       <div className="temp">{weather.main && tempConversion(weather.main.temp)}
@@ -53,7 +58,7 @@ const WeatherContainer = () => {
       <div className="zip-header">Zip Code:</div>
 
       <div className="buttons">
-        <div className="zip-container"><span className="zip">10036</span></div>
+      <div className="zip-container"><span className="zip">{zipCode}</span></div>
         <button className="update" onClick={fetchWeather}>Update</button>
       </div>
     </div>
