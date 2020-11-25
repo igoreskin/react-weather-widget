@@ -1,5 +1,6 @@
 import './App.css';
 import WeatherContainer from './WeatherContainer';
+import 'animate.css';
 
 function App() {
   return (

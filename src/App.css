@@ -122,3 +122,9 @@ img {
 .zip-container:focus {
   outline: 0 !important;
 }
+
+.error {
+  color: red;
+  margin-top: 25px;
+  font-weight: 600;
+}

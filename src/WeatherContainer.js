@@ -5,6 +5,7 @@ const WeatherContainer = () => {
 
   const [weather, setWeather] = useState([]);
   const [zip, setZip] = useState('10036');
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchWeather();
@@ -18,19 +19,23 @@ const WeatherContainer = () => {
 
   const inputRef = useRef(null);
 
-  const baseURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=709847967f5e54b97308c1b2cae4dee5`
+  const baseURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=709847967f5e54b97308c1b2cae4dee5`;
 
   const fetchWeather = async () => {
     try {
       const res = await axios.get(baseURL);
       setWeather(res.data);
+      setError(false);
     } catch (error) {
-      console.error(error.message);
+      console.error("ERROR MESSAGE: ", error.message);
+      setError(true);
+      setZip('');
+      inputRef.current.focus();
     }
   }
 
   const handleChange = e => {
-    setZip(e.target.value)
+    setZip(e.target.value);
   }
 
   const handleSubmit = e => {
@@ -71,6 +76,8 @@ const WeatherContainer = () => {
           <input type="text" ref={inputRef} className="zip-container" value={zip || ''} onChange={handleChange} />
           <button className="update" type="submit">Update</button>
         </form>
+
+        {error && <div className="error animate__animated animate__flash">Please enter a valid zip code!</div>}
     </div>
   )
 }
