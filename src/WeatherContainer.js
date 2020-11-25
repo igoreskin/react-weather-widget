@@ -3,7 +3,8 @@ import axios from 'axios';
 
 const WeatherContainer = () => {
 
-  const [weather, setWeather] = useState([])
+  const [weather, setWeather] = useState([]);
+  const [zip, setZip] = useState('10036')
 
   useEffect(() => {
     fetchWeather()
@@ -13,7 +14,7 @@ const WeatherContainer = () => {
     setWeather(weather)
   }, [weather])
 
-  const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=10036,us&appid=709847967f5e54b97308c1b2cae4dee5'
+  const baseURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=709847967f5e54b97308c1b2cae4dee5`
 
   const fetchWeather = async () => {
     try {
@@ -24,9 +25,13 @@ const WeatherContainer = () => {
     }
   }
 
-  let paramsString = baseURL.split("?")[1];
-  let searchParams = new URLSearchParams(paramsString);
-  let zipCode = searchParams.get("zip").split(",")[0];
+  const handleChange = e => {
+    setZip(e.target.value)
+  }
+
+  // let paramsString = baseURL.split("?")[1];
+  // let searchParams = new URLSearchParams(paramsString);
+  // let zipCode = searchParams.get("zip").split(",")[0];
 
   const tempConversion = n => Math.round(n - 273.15);
 
@@ -58,7 +63,7 @@ const WeatherContainer = () => {
       <div className="zip-header">Zip Code:</div>
 
       <div className="buttons">
-      <div className="zip-container"><span className="zip">{zipCode}</span></div>
+        <input className="zip-container" type="text" value={zip} onChange={handleChange} />
         <button className="update" onClick={fetchWeather}>Update</button>
       </div>
     </div>
