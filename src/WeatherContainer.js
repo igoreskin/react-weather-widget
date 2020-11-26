@@ -6,6 +6,7 @@ const WeatherContainer = () => {
   const [weather, setWeather] = useState([]);
   const [zip, setZip] = useState('10036');
   const [error, setError] = useState(false);
+  const [animate, setAnimate] = useState(true);
 
   useEffect(() => {
     fetchWeather();
@@ -16,6 +17,10 @@ const WeatherContainer = () => {
     setWeather(weather);
     inputRef.current.focus();
   }, [weather])
+
+  useEffect(() => {
+    setAnimate(true);
+  }, [animate])
 
   const inputRef = useRef(null);
 
@@ -40,14 +45,17 @@ const WeatherContainer = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setAnimate(false); 
     fetchWeather();
   }
 
   const tempConversion = n => Math.round(n - 273.15);
 
+  const addClass = !error && animate && "animate__animated animate__backInDown";
+
   return (
     <div>
-      <div className="header">{weather.name}
+      <div className={`header ${addClass}`}>{weather.name}
         {
           weather.weather && 
           <img 
