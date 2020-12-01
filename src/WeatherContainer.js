@@ -49,6 +49,10 @@ const WeatherContainer = () => {
     fetchWeather();
   }
 
+  const clearZip = () => {
+    setZip('');
+  }
+
   const tempConversion = n => Math.round(n - 273.15);
 
   const addClass = !error && animate && "animate__animated animate__backInDown";
@@ -81,7 +85,7 @@ const WeatherContainer = () => {
       <div className="zip-header">Zip Code:</div>
 
         <form className="buttons" onSubmit={handleSubmit}>
-          <input type="text" ref={inputRef} className="zip-container" value={zip || ''} onChange={handleChange} />
+          <input type="text" ref={inputRef} className="zip-container" value={zip || ''} onChange={handleChange} onClick={clearZip} />
           <button className="update" type="submit">Update</button>
         </form>
 
