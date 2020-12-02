@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Automated end-to-end test
 
-To run an automated e2e test, please run this entire command in the project directory: 
+After running npm install, to run an automated e2e test please run this entire command in the project directory: 
 
 ### `testcafe chrome e2etest.js`
 
