@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Automated end-to-end test
+
+To run an automated e2e test, please run this entire command in the project directory: 
+
+### `testcafe chrome e2etest.js`
+
 ## Available Scripts
 
 In the project directory, you can run:
