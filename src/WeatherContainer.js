@@ -6,6 +6,7 @@ const WeatherContainer = () => {
   const [weather, setWeather] = useState([]);
   const [zip, setZip] = useState('10036');
   const [error, setError] = useState(false);
+  const [notification, setNotification] = useState(false);
   const [animate, setAnimate] = useState(true);
 
   useEffect(() => {
@@ -31,9 +32,13 @@ const WeatherContainer = () => {
       const res = await axios.get(baseURL);
       setWeather(res.data);
       setError(false);
+      setNotification(false);
     } catch (error) {
       console.error("ERROR MESSAGE: ", error.message);
       setError(true);
+      setTimeout(() => {
+        setNotification(true)
+      }, 3500)
       setZip('');
       inputRef.current.focus();
     }
@@ -85,7 +90,10 @@ const WeatherContainer = () => {
           <button className="update" type="submit">Update</button>
         </form>
 
-        {error && <div className="error animate__animated animate__flash">Please enter a valid zip code!</div>}
+        {/* {error && <div className="error animate__animated animate__flash">Please enter a valid zip code!</div>} */}
+
+        {error && <div style={{fontSize: "150%"}} className="error animate__animated animate__bounceInDown">If you think that was a zip code... </div>}
+        {notification && <div style={{fontSize: "200%", marginTop: "-2px"}} className="error animate__animated animate__zoomIn">THINK AGAIN!</div>}
     </div>
   )
 }
